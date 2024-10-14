@@ -34,9 +34,9 @@ async function fetchIds() {
 }
 
 // Handles making an API query when a search is made
-function dataFetch() {
+async function dataFetch() {
    
-   fetchIds();
+   await fetchIds();
 
    // Get the selected tote ID
    const selectedID = toteFilter.value; 

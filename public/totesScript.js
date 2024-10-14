@@ -8,8 +8,6 @@ const viewButtons = document.getElementsByClassName("view-button");
 const searchType = document.getElementById("part-search-option");
 const searchTerm = document.getElementById("tote-search");
 
-
-
 // Remove saved data from sessionStorage
 //sessionStorage.removeItem("key");
 
@@ -40,14 +38,12 @@ dataFetch();
 
 // Updates global variables when a new search is made
 function dataInit(data) {
-    console.log(data);
     globalData = data;
     numResults = globalData.length;
     page = 1;
     startResult = 0;
     pageChange(0);
 }
-
 
 function pageChange(incrementValue) {
   page += incrementValue;
@@ -118,11 +114,6 @@ function updateTable(startResult, endResult) {
         }
     }
 }
-
-function viewBoard(index) {
-    sessionStorage.setItem("totename", toteNames[index].innerHTML);
-}
-
 
 function deleteBoard(index) {
   if (confirm(`You sure you wanna delete tote ${toteNames[index].innerHTML} and its contents?`)) {
