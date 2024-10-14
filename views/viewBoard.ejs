@@ -1,0 +1,166 @@
+<%- include('partials/header') %>
+
+<div class="parts-header">
+  <h1 class="page-header" id="board-name-title">Board View</h1>
+  <div class="search-addPart-container">
+
+    <!-- Dropdown for choosing search option -->
+    <!-- <label for="part-search-option">Search by: </label> -->
+    <select name="part-search-option" id="part-search-option">
+        <option value="designator">Designator</option>
+        <option value="libref">Libref</option>
+        <option value="description">Description</option>
+    </select>
+
+    <!-- Input search bar and add part button -->
+    <input type="search" id="part-search" class="page-search" placeholder="Enter search term" onkeyup="dataFetch()">
+
+    <button id="create-layup-button" onclick="createLayupBoard()">Create Layup Table</button>
+  </div>
+
+
+</div>
+  
+
+
+<div class="table-container" onload="dataFetch()">
+  <!-- Start of rendering table -->
+    <table class="table">
+      <!-- Table header to display column names -->
+      <thead>
+        <tr>
+          <th class="name-column">Name</th>
+          <th class="letter-column">Tote</th>
+          <th class="description-column">Description</th>
+          
+        </tr>
+      </thead>
+      <!-- End of table header -->
+      <!-- Start of main table body -->
+      <tbody id="parts-table">
+        <!-- Part row 0 -->
+        <tr class="part-row" id="part-row-0">
+            <td class="part-data libref"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+        </tr>
+        <!-- Part row 1 -->
+        <tr class="part-row" id="part-row-1">
+            <td class="part-data libref"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+        </tr>
+        <!-- Part row 2 -->
+        <tr class="part-row" id="part-row-2">
+            <td class="part-data libref"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+        </tr>
+        <!-- Part row 3 -->
+        <tr class="part-row" id="part-row-3">
+            <td class="part-data libref"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+        </tr>
+        <!-- Part row 4 -->
+        <tr class="part-row" id="part-row-4">
+            <td class="part-data libref"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+        </tr>
+        <!-- Part row 5 -->
+        <tr class="part-row" id="part-row-5">
+            <td class="part-data libref"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+        </tr>
+        <!-- Part row 6 -->
+        <tr class="part-row" id="part-row-6">
+            <td class="part-data libref"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+        </tr>
+        <!-- Part row 7 -->
+        <tr class="part-row" id="part-row-7">
+            <td class="part-data libref"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+        </tr>
+        <!-- Part row 8 -->
+        <tr class="part-row" id="part-row-8">
+          <td class="part-data libref"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          </td>
+        </tr>
+        <!-- Part row 9 -->
+        <tr class="part-row" id="part-row-9">
+            <td class="part-data libref"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+        </tr>   
+      </tbody>
+      <!-- End of main table body -->
+    </table>
+  <!-- End of rendering table -->
+  </div>
+  <!-- Section for changing pages of results -->
+  <div class="page-select">
+    <button class="page-select-button" onclick="pageChange(-1)">&laquo;</button>
+    <p id="page-select-information"></p>
+    <button class="page-select-button" onclick="pageChange(1)">&raquo;</button>
+  </div>
+  <!-- Links to script.js found in 'public' folder. This contains the functions called on certain page actions -->
+  <script src="./viewBoardScript.js"></script>
+</body>
+</html>

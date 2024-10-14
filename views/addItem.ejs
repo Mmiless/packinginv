@@ -1,0 +1,30 @@
+<%- include('partials/header') %>
+
+<form id="add-part-form" class="add-form">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" class="add-part-form-element" name="name" placeholder="Ex: Thingy" required><br>
+
+    <label for="tote_id">Tote:</label><br>
+    <select id="tote_id" name="tote_id" class="add-part-form-element">
+      <!--TODO: Dynamically fill with names of totes, values = their ids -->
+      <% Object.entries(toteMap).forEach(([id, name]) => { %>
+        <option value="<%= id %>"><%= name %></option>
+      <% }) %>
+    </select>
+    <br>
+
+    <label for="description">Description:</label><br>
+    <input type="text" id="description" class="add-part-form-element" name="description" placeholder="Ex: Really big" required><br>
+
+    <label for="lab_location">Lab Location:</label><br>
+    <input type="text" id="lab_location" class="add-part-form-element" name="lab_location" placeholder="Ex: The SHELF" required><br>
+
+
+    <label for="num">Num:</label><br>
+    <input type="number" id="num" class="add-part-form-element" name="num" placeholder="Ex: 10" required><br>
+
+    <input type="submit"></input>
+  </form>
+  <script src="./addItemScript.js"></script>
+</body>
+</html>

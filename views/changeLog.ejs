@@ -1,0 +1,206 @@
+<%- include('partials/header') %>
+
+<div class="parts-header">
+  <h1 class="page-header">Change Log</h1>
+  <div class="search-addPart-container">
+
+    <!-- Dropdown for choosing search option -->
+    <select name="part-search-option" id="part-search-option">
+      <option value="libref">Libref</option>
+      <option value="date">Date</option>
+    </select>
+
+    <!-- Input search bar and add part button -->
+    <input type="search" id="part-search" class="page-search" placeholder="Enter search term" onkeyup="dataFetch()">
+  </div>
+
+
+</div>
+
+  <!-- Container for search filters -->
+  <div class="filter-container">
+    <!-- Change type filter -->
+    <div class="type-filter-container">
+      <label class="filter-description" for="type-filter">Change type: </label>
+      <select name="type-filter" id="type-filter" onchange="dataFetch()">
+        <option value="%%">None</option>
+        <option value="Delete">Delete</option>
+        <option value="Add">Add</option>
+        <option value="Update">Update</option>
+      </select>
+    </div>
+
+  </div>
+
+
+<div class="table-container">
+  <!-- Start of rendering table -->
+    <table class="table">
+      <!-- Table header to display column names -->
+      <thead>
+        <tr>
+          <th class="libref-column">Libref</th>
+          <th class="change-column">Change Type</th>
+          <th class="oldquant-column">Old Quant</th>
+          <th class="newquant-column">New Quant</th>
+          <th class="date-column">Date</th>
+        </tr>
+      </thead>
+      <!-- End of table header -->
+      <!-- Start of main table body -->
+      <tbody id="parts-table">
+        <!-- Change row 0 -->
+        <tr class="part-row" id="part-row-0">
+          <!-- Each part row contains one td tag for each column in the table -->
+          <td class="part-data libref"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+
+          <!-- Delete Button -->
+          <td class="undo-button-container">
+            <button class="undo-button" onclick="undo(0)">Undo</button>
+          </td>
+        </tr>
+        <!-- Change row 1 -->
+        <tr class="part-row" id="part-row-0">
+            <!-- Each part row contains one td tag for each column in the table -->
+            <td class="part-data libref"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+
+            <!-- Delete Button -->
+            <td class="undo-button-container">
+                <button class="undo-button" onclick="undo(1)">Undo</button>
+            </td>
+        </tr>
+        <!-- Part row 2 -->
+        <tr class="part-row" id="part-row-0">
+            <!-- Each part row contains one td tag for each column in the table -->
+            <td class="part-data libref"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+  
+            <!-- Delete Button -->
+            <td class="undo-button-container">
+              <button class="undo-button" onclick="undo(2)">Undo</button>
+            </td>
+        </tr>
+        <!-- Part row 3 -->
+        <tr class="part-row" id="part-row-0">
+            <!-- Each part row contains one td tag for each column in the table -->
+            <td class="part-data libref"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+  
+            <!-- Delete Button -->
+            <td class="undo-button-container">
+              <button class="undo-button" onclick="undo(3)">Undo</button>
+            </td>
+        </tr>
+        <!-- Part row 4 -->
+        <tr class="part-row" id="part-row-0">
+            <!-- Each part row contains one td tag for each column in the table -->
+            <td class="part-data libref"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+  
+            <!-- Delete Button -->
+            <td class="undo-button-container">
+              <button class="undo-button" onclick="undo(4)">Undo</button>
+            </td>
+        </tr>
+        <!-- Part row 5 -->
+        <tr class="part-row" id="part-row-0">
+            <!-- Each part row contains one td tag for each column in the table -->
+            <td class="part-data libref"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+  
+            <!-- Delete Button -->
+            <td class="undo-button-container">
+              <button class="undo-button" onclick="undo(5)">Undo</button>
+            </td>
+        </tr>
+        <!-- Part row 6 -->
+        <tr class="part-row" id="part-row-0">
+            <!-- Each part row contains one td tag for each column in the table -->
+            <td class="part-data libref"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+  
+            <!-- Delete Button -->
+            <td class="undo-button-container">
+              <button class="undo-button" onclick="undo(6)">Undo</button>
+            </td>
+        </tr>
+        <!-- Part row 7 -->
+        <tr class="part-row" id="part-row-0">
+            <!-- Each part row contains one td tag for each column in the table -->
+            <td class="part-data libref"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+  
+            <!-- Delete Button -->
+            <td class="undo-button-container">
+              <button class="undo-button" onclick="undo(7)">Undo</button>
+            </td>
+        </tr>
+        <!-- Part row 8 -->
+        <tr class="part-row" id="part-row-0">
+            <!-- Each part row contains one td tag for each column in the table -->
+            <td class="part-data libref"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+  
+            <!-- Delete Button -->
+            <td class="undo-button-container">
+              <button class="undo-button" onclick="undo(8)">Undo</button>
+            </td>
+        </tr>
+        <!-- Part row 9 -->
+        <tr class="part-row" id="part-row-0">
+            <!-- Each part row contains one td tag for each column in the table -->
+            <td class="part-data libref"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+  
+            <!-- Delete Button -->
+            <td class="undo-button-container">
+              <button class="undo-button" onclick="undo(9)">Undo</button>
+            </td>
+        </tr>   
+      </tbody>
+      <!-- End of main table body -->
+    </table>
+  <!-- End of rendering table -->
+  </div>
+  <!-- Section for changing pages of results -->
+  <div class="page-select">
+    <button class="page-select-button" onclick="pageChange(-1)">&laquo;</button>
+    <p id="page-select-information"></p>
+    <button class="page-select-button" onclick="pageChange(1)">&raquo;</button>
+  </div>
+  <!-- Links to script.js found in 'public' folder. This contains the functions called on certain page actions -->
+  <script src="./changeLogScript.js"></script>
+</body>
+</html>

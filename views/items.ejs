@@ -1,0 +1,305 @@
+<%- include('partials/header') %>
+
+<div class="parts-header">
+  <h1 class="page-header">Items</h1>
+  <div class="search-addPart-container">
+
+    <!-- Dropdown for choosing search option -->
+    <!-- <label for="part-search-option">Search by: </label> -->
+    <select name="part-search-option" id="part-search-option">
+      <option value="name">Name</option>
+      <option value="description">Description</option>
+      <option value="lab_location">Location</option>
+    </select>
+
+    <!-- Input search bar and add part button -->
+    <input type="search" id="part-search" class="page-search" placeholder="Enter search term" onkeyup="dataFetch()">
+    <a href="/addItem" class="add-part-button">Add Item</a>
+  </div>
+
+
+</div>
+
+  <!-- Container for search filters -->
+  <div class="tote-container">
+    <!-- Letter / component type filter -->
+    <div class="tote-filter-container">
+      <label class="filter-description" for="tote-filter">Tote: </label>
+      <select name="tote-filter" id="tote-filter" onchange="dataFetch()">
+        <option value="ALL">ALL</option>
+        <% Object.entries(toteMap).forEach(([id, name]) => { %>
+          <option value="<%= id %>"><%= name %></option>
+        <% }) %>
+      </select>
+    </div>
+
+  </div>
+
+
+<div class="table-container" onload="dataFetch()">
+  <!-- Start of rendering table -->
+    <table class="table">
+      <!-- Table header to display column names -->
+      <thead>
+        <tr>
+          <th class="name-column">Name</th>
+          <th class="tote-column">Tote</th>
+          <th class="description-column">Description</th>
+          <th class="location-column">Lab Location</th>
+          <th class="num-column">Num</th>
+        </tr>
+      </thead>
+      <!-- End of table header -->
+      <!-- Start of main table body -->
+      <tbody id="parts-table">
+        <!-- Part row 0 -->
+        <tr class="part-row" id="part-row-0">
+          <!-- Each part row contains one td tag for each column in the table -->
+          <td class="part-data name"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data num"></td>
+          <!-- td element for displaying shopQuant -->
+          <td class="part-data shop-quant-row"> 
+            <!-- Input tag is used to allow for custom input of quantities -->
+            <div class="custom-quant-container">
+              <input type="number" min="0" class="shop-quant-input" id="shop-quant-input-0">
+              <button class="submit-quant-button" onclick="updateShopQuant(document.getElementById('shop-quant-input-0').value, 0)">Set num</button>
+            </div>
+            <!-- Container div is used for styling purposes (flexbox) -->
+            <div class="increment-quant-container">
+              <!-- Increment function is called when either button is clicked-->
+              <button class="increment-quant-button increment-up" onclick="incrementQuant(0, 1)">+</button>
+              <button class="increment-quant-button increment-down" onclick="incrementQuant(0, -1)">-</button>
+            </div>
+          </td>
+          <td class="part-data"></td>
+
+          <!-- Delete Button -->
+          <td class="delete-button-container">
+            <button class="delete-button" onclick="deleteItem(0)">Delete</button>
+          </td>
+        </tr>
+        <!-- Part row 1 -->
+        <tr class="part-row" id="part-row-1">
+          <td class="part-data name"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data num"></td>
+          <td class="part-data shop-quant-row">
+            <div class="custom-quant-container">
+              <input type="number" min="0" class="shop-quant-input" id="shop-quant-input-1">
+              <button class="submit-quant-button" onclick="updateShopQuant(document.getElementById('shop-quant-input-1').value, 1)">Set num</button>
+            </div>
+            <div class="increment-quant-container">
+              <button class="increment-quant-button increment-up" onclick="incrementQuant(1, 1)">+</button>
+              <button class="increment-quant-button increment-down" onclick="incrementQuant(1, -1)">-</button>
+            </div>
+          </td>
+          <td class="part-data"></td>
+
+          <td class="delete-button-container">
+            <button class="delete-button" onclick="deleteItem(1)">Delete</button>
+          </td>
+        </tr>
+        <!-- Part row 2 -->
+        <tr class="part-row" id="part-row-2">
+          <td class="part-data name"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data num"></td>
+          <td class="part-data shop-quant-row">
+            <div class="custom-quant-container">
+              <input type="number" min="0" class="shop-quant-input" id="shop-quant-input-2">
+              <button class="submit-quant-button" onclick="updateShopQuant(document.getElementById('shop-quant-input-2').value, 2)">Set num</button>
+            </div>
+            <div class="increment-quant-container">
+              <button class="increment-quant-button increment-up" onclick="incrementQuant(2, 1)">+</button>
+              <button class="increment-quant-button increment-down" onclick="incrementQuant(2, -1)">-</button>
+            </div>
+          </td>
+          <td class="part-data"></td>
+
+          <td class="delete-button-container">
+            <button class="delete-button" onclick="deleteItem(2)">Delete</button>
+          </td>
+        </tr>
+        <!-- Part row 3 -->
+        <tr class="part-row" id="part-row-3">
+          <td class="part-data name"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data num"></td>
+          <td class="part-data shop-quant-row">
+            <div class="custom-quant-container">
+              <input type="number" min="0" class="shop-quant-input" id="shop-quant-input-3">
+              <button class="submit-quant-button" onclick="updateShopQuant(document.getElementById('shop-quant-input-3').value, 3)">Set num</button>
+            </div>
+            <div class="increment-quant-container">
+              <button class="increment-quant-button increment-up" onclick="incrementQuant(3, 1)">+</button>
+              <button class="increment-quant-button increment-down" onclick="incrementQuant(3, -1)">-</button>
+            </div>
+          </td>
+          <td class="part-data"></td>
+
+          <td class="delete-button-container">
+            <button class="delete-button" onclick="deleteItem(3)">Delete</button>
+          </td>
+        </tr>
+        <!-- Part row 4 -->
+        <tr class="part-row" id="part-row-4">
+          <td class="part-data name"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data num"></td>
+          <td class="part-data shop-quant-row">
+            <div class="custom-quant-container">
+              <input type="number" min="0" class="shop-quant-input" id="shop-quant-input-4">
+              <button class="submit-quant-button" onclick="updateShopQuant(document.getElementById('shop-quant-input-4').value, 4)">Set num</button>
+            </div>
+            <div class="increment-quant-container">
+              <button class="increment-quant-button increment-up" onclick="incrementQuant(4, 1)">+</button>
+              <button class="increment-quant-button increment-down" onclick="incrementQuant(4, -1)">-</button>
+            </div>
+          </td>
+          <td class="part-data"></td>
+
+          <td class="delete-button-container">
+            <button class="delete-button" onclick="deleteItem(4)">Delete</button>
+          </td>
+        </tr>
+        <!-- Part row 5 -->
+        <tr class="part-row" id="part-row-5">
+          <td class="part-data name"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data num"></td>
+          <td class="part-data shop-quant-row">
+            <div class="custom-quant-container">
+              <input type="number" min="0" class="shop-quant-input" id="shop-quant-input-5">
+              <button class="submit-quant-button" onclick="updateShopQuant(document.getElementById('shop-quant-input-5').value, 5)">Set num</button>
+            </div>
+            <div class="increment-quant-container">
+              <button class="increment-quant-button increment-up" onclick="incrementQuant(5, 1)">+</button>
+              <button class="increment-quant-button increment-down" onclick="incrementQuant(5, -1)">-</button>
+            </div>
+          </td>
+          <td class="part-data"></td>
+
+          <td class="delete-button-container">
+            <button class="delete-button" onclick="deleteItem(5)">Delete</button>
+          </td>
+        </tr>
+        <!-- Part row 6 -->
+        <tr class="part-row" id="part-row-6">
+          <td class="part-data name"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data num"></td>
+          <td class="part-data shop-quant-row">
+            <div class="custom-quant-container">
+              <input type="number" min="0" class="shop-quant-input" id="shop-quant-input-6">
+              <button class="submit-quant-button" onclick="updateShopQuant(document.getElementById('shop-quant-input-6').value, 6)">Set num</button>
+            </div>
+            <div class="increment-quant-container">
+              <button class="increment-quant-button increment-up" onclick="incrementQuant(6, 1)">+</button>
+              <button class="increment-quant-button increment-down" onclick="incrementQuant(6, -1)">-</button>
+            </div>
+          </td>
+          <td class="part-data"></td>
+
+          <td class="delete-button-container">
+            <button class="delete-button" onclick="deleteItem(6)">Delete</button>
+          </td>
+        </tr>
+        <!-- Part row 7 -->
+        <tr class="part-row" id="part-row-7">
+          <td class="part-data name"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data num"></td>
+          <td class="part-data shop-quant-row">
+            <div class="custom-quant-container">
+              <input type="number" min="0" class="shop-quant-input" id="shop-quant-input-7">
+              <button class="submit-quant-button" onclick="updateShopQuant(document.getElementById('shop-quant-input-7').value, 7)">Set num</button>
+            </div>
+            <div class="increment-quant-container">
+              <button class="increment-quant-button increment-up" onclick="incrementQuant(7, 1)">+</button>
+              <button class="increment-quant-button increment-down" onclick="incrementQuant(7, -1)">-</button>
+            </div>
+          </td>
+          <td class="part-data"></td>
+
+          <td class="delete-button-container">
+            <button class="delete-button" onclick="deleteItem(7)">Delete</button>
+          </td>
+        </tr>
+        <!-- Part row 8 -->
+        <tr class="part-row" id="part-row-8">
+          <td class="part-data name"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data num"></td>
+          <td class="part-data shop-quant-row">
+            <div class="custom-quant-container">
+              <input type="number" min="0" class="shop-quant-input" id="shop-quant-input-8">
+              <button class="submit-quant-button" onclick="updateShopQuant(document.getElementById('shop-quant-input-8').value, 8)">Set num</button>
+            </div>
+            <div class="increment-quant-container">
+              <button class="increment-quant-button increment-up" onclick="incrementQuant(8, 1)">+</button>
+              <button class="increment-quant-button increment-down" onclick="incrementQuant(8, -1)">-</button>
+            </div>
+          </td>
+          <td class="part-data"></td>
+
+          <td class="delete-button-container">
+            <button class="delete-button" onclick="deleteItem(8)">Delete</button>
+          </td>
+        </tr>
+        <!-- Part row 9 -->
+        <tr class="part-row" id="part-row-9">
+          <td class="part-data name"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data num"></td>
+          <td class="part-data shop-quant-row">
+            <div class="custom-quant-container">
+              <input type="number" min="0" class="shop-quant-input" id="shop-quant-input-9">
+              <button class="submit-quant-button" onclick="updateShopQuant(document.getElementById('shop-quant-input-9').value, 9)">Set num</button>
+            </div>
+            <div class="increment-quant-container">
+              <button class="increment-quant-button increment-up" onclick="incrementQuant(9, 1)">+</button>
+              <button class="increment-quant-button increment-down" onclick="incrementQuant(9, -1)">-</button>
+            </div>
+          </td>
+          <td class="part-data"></td>
+
+          <td class="delete-button-container">
+            <button class="delete-button" onclick="deleteItem(9)">Delete</button>
+          </td>
+        </tr>   
+      </tbody>
+      <!-- End of main table body -->
+    </table>
+  <!-- End of rendering table -->
+  </div>
+  <!-- Section for changing pages of results -->
+  <div class="page-select">
+    <button class="page-select-button" onclick="pageChange(-1)">&laquo;</button>
+    <p id="page-select-information"></p>
+    <button class="page-select-button" onclick="pageChange(1)">&raquo;</button>
+  </div>
+  <!-- Links to script.js found in 'public' folder. This contains the functions called on certain page actions -->
+  <script src="./itemsScript.js"></script>
+</body>
+</html>

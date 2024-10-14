@@ -1,0 +1,164 @@
+<%- include('partials/header') %>
+
+<div class="parts-header">
+  <div class="welcome-header">
+    <h1 class="page-header">Totes</h1>
+</div>
+
+<div class="search-addPart-container">
+  <select name="part-search-option" id="part-search-option">
+    <option value="name">Name</option>
+    <option value="description">Description</option>
+  </select>
+
+  
+    <!-- Input search bar and add part button -->
+    <input type="search" id="tote-search" class="page-search" placeholder="Enter search term" onkeyup="dataFetch()">
+    <a href="/addTote" class="add-part-button">Add Tote</a>
+
+  </div>
+
+
+</div>
+
+
+<div class="table-container">
+  <!-- Start of rendering table -->
+    <table class="table">
+      <!-- Table header to display column names -->
+      <thead>
+        <tr>
+          <th class="name-column">Name</th>
+          <th class="description-column">Description</th>
+        </tr>
+      </thead>
+      <!-- End of table header -->
+      <!-- Start of main table body -->
+      <tbody id="parts-table">
+        <!-- Change row 0 -->
+        <tr class="part-row">
+          <!-- Each part row contains one td tag for each column in the table -->
+          <td class="part-data tote-name"></td>
+          <td class="part-data"></td>
+
+          <!-- Delete Button -->
+          <td class="delete-button-container">
+            <button class="delete-button" onclick="deleteBoard(0)">Delete</button>
+          </td>
+        </tr>
+        <!-- Change row 1 -->
+        <tr class="part-row">
+            <!-- Each part row contains one td tag for each column in the table -->
+            <td class="part-data tote-name"></td>
+            <td class="part-data"></td>
+  
+            <!-- Delete Button -->
+            <td class="delete-button-container">
+              <button class="delete-button" onclick="deleteBoard(1)">Delete</button>
+            </td>
+          </tr>
+        <!-- Part row 2 -->
+        <tr class="part-row">
+            <!-- Each part row contains one td tag for each column in the table -->
+            <td class="part-data tote-name"></td>
+            <td class="part-data"></td>
+  
+            <!-- Delete Button -->
+            <td class="delete-button-container">
+              <button class="delete-button" onclick="deleteBoard(2)">Delete</button>
+            </td>
+          </tr>
+        <!-- Part row 3 -->
+        <tr class="part-row">
+            <!-- Each part row contains one td tag for each column in the table -->
+            <td class="part-data tote-name"></td>
+            <td class="part-data"></td>
+  
+            <!-- Delete Button -->
+            <td class="delete-button-container">
+              <button class="delete-button" onclick="deleteBoard(3)">Delete</button>
+            </td>
+          </tr>
+        <!-- Part row 4 -->
+        <tr class="part-row">
+            <!-- Each part row contains one td tag for each column in the table -->
+            <td class="part-data tote-name"></td>
+            <td class="part-data"></td>
+  
+            <!-- Delete Button -->
+            <td class="delete-button-container">
+              <button class="delete-button" onclick="deleteBoard(4)">Delete</button>
+            </td>
+          </tr>
+        <!-- Part row 5 -->
+        <tr class="part-row">
+            <!-- Each part row contains one td tag for each column in the table -->
+            <td class="part-data tote-name"></td>
+            <td class="part-data"></td>
+  
+            <!-- Delete Button -->
+            <td class="delete-button-container">
+              <button class="delete-button" onclick="deleteBoard(5)">Delete</button>
+            </td>
+          </tr>
+        <!-- Part row 6 -->
+        <tr class="part-row">
+            <!-- Each part row contains one td tag for each column in the table -->
+            <td class="part-data tote-name"></td>
+            <td class="part-data"></td>
+  
+            <!-- Delete Button -->
+            <td class="delete-button-container">
+              <button class="delete-button" onclick="deleteBoard(6)">Delete</button>
+            </td>
+          </tr>
+        <!-- Part row 7 -->
+        <tr class="part-row">
+            <!-- Each part row contains one td tag for each column in the table -->
+            <td class="part-data tote-name"></td>
+            <td class="part-data"></td>
+  
+            <!-- Delete Button -->
+            <td class="delete-button-container">
+              <!-- ; alert('myFunc executed'); return true -->
+              <button class="delete-button" onclick="deleteBoard(7)">Delete</button>
+              <!--<a href="/viewBoard" class="view-button" onclick="viewBoard(7)">View</a>-->
+            </td>
+          </tr>
+        <!-- Part row 8 -->
+        <tr class="part-row">
+            <!-- Each part row contains one td tag for each column in the table -->
+            <td class="part-data tote-name"></td>
+            <td class="part-data"></td>
+  
+            <!-- Delete Button -->
+            <td class="delete-button-container">
+              <button class="delete-button" onclick="deleteBoard(8)">Delete</button>
+            </td>
+          </tr>
+        <!-- Part row 9 -->
+        <tr class="part-row">
+            <!-- Each part row contains one td tag for each column in the table -->
+            <td class="part-data tote-name"></td>
+            <td class="part-data"></td>
+  
+            <!-- Delete Button -->
+            <td class="delete-button-container">
+              <button class="delete-button" onclick="deleteBoard(9)">Delete</button>
+            </td>
+          </tr>  
+      </tbody>
+      <!-- End of main table body -->
+    </table>
+  <!-- End of rendering table -->
+  </div>
+  <!-- Section for changing pages of results -->
+  <div class="page-select">
+    <button class="page-select-button" onclick="pageChange(-1)">&laquo;</button>
+    <p id="page-select-information"></p>
+    <button class="page-select-button" onclick="pageChange(1)">&raquo;</button>
+  </div>
+  <!-- Links to script.js found in 'public' folder. This contains the functions called on certain page actions -->
+  <script src="./totesScript.js"></script>
+</body>
+</html>

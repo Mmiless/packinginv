@@ -1,0 +1,173 @@
+<%- include('partials/header') %>
+
+<div class="parts-header">
+  <h1 class="page-header" id="board-name-title"></h1>
+  <div class="search-addPart-container">
+
+    <!-- Dropdown for choosing search option -->
+    <!-- <label for="part-search-option">Search by: </label> -->
+    <select name="part-search-option" id="part-search-option">
+      <option value="designator">Designator</option>
+      <option value="libref">Libref</option>
+      <option value="description">Description</option>
+    </select>
+
+    <!-- Input search bar and add part button -->
+    <input type="search" id="part-search" class="page-search" placeholder="Enter search term" onkeyup="dataFetch()">
+  </div>
+
+  <div class="status-filter-container">
+    <label class="filter-description" for="status-filter">Completion Status: </label>
+    <select name="status-filter" id="status-filter" onchange="dataFetch()">
+      <option value="Any">Any Status</option>
+      <option value="1">Complete</option>
+      <option value="0">Not Complete</option>
+    </select>
+
+  </div>
+
+</div>
+  
+
+<div class="table-container" onload="dataFetch()">
+  <!-- Start of rendering table -->
+    <table class="table">
+      <!-- Table header to display column names -->
+      <thead>
+        <tr>
+          <th class="libref-column">Libref</th>
+          <th class="letter-column">Designator</th>
+          <th class="value-column">Footprint</th>
+          <th class="package-column">Description</th>
+          <th class="description-column">Comment</th>
+          <th class="check-column">Completion Status</th>
+        </tr>
+      </thead>
+      <!-- End of table header -->
+      <!-- Start of main table body -->
+      <tbody id="parts-table">
+        <!-- Part row 0 -->
+        <tr class="part-row" id="part-row-0">
+            <td class="part-data libref"></td>
+            <td class="part-data designator"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data">
+                <input type="checkbox" class="completion-check" onclick="checkItem(0)">
+            </td>
+        </tr>
+        <!-- Part row 1 -->
+        <tr class="part-row" id="part-row-1">
+            <td class="part-data libref"></td>
+            <td class="part-data designator"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data">
+                <input type="checkbox" class="completion-check" onclick="checkItem(1)">
+            </td>
+        </tr>
+        <!-- Part row 2 -->
+        <tr class="part-row" id="part-row-2">
+            <td class="part-data libref"></td>
+            <td class="part-data designator"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data">
+                <input type="checkbox" class="completion-check" onclick="checkItem(2)">
+            </td>
+        </tr>
+        <!-- Part row 3 -->
+        <tr class="part-row" id="part-row-3">
+            <td class="part-data libref"></td>
+            <td class="part-data designator"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data">
+                <input type="checkbox" class="completion-check" onclick="checkItem(3)">
+            </td>
+        </tr>
+        <!-- Part row 4 -->
+        <tr class="part-row" id="part-row-4">
+            <td class="part-data libref"></td>
+            <td class="part-data designator"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data">
+                <input type="checkbox" class="completion-check" onclick="checkItem(4)">
+            </td>
+        </tr>
+        <!-- Part row 5 -->
+        <tr class="part-row" id="part-row-5">
+            <td class="part-data libref"></td>
+            <td class="part-data designator"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data">
+                <input type="checkbox" class="completion-check" onclick="checkItem(5)">
+            </td>
+        </tr>
+        <!-- Part row 6 -->
+        <tr class="part-row" id="part-row-6">
+            <td class="part-data libref"></td>
+            <td class="part-data designator"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data">
+                <input type="checkbox" class="completion-check" onclick="checkItem(6)">
+            </td>
+        </tr>
+        <!-- Part row 7 -->
+        <tr class="part-row" id="part-row-7">
+            <td class="part-data libref"></td>
+            <td class="part-data designator"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data">
+                <input type="checkbox" class="completion-check" onclick="checkItem(7)">
+            </td>
+        </tr>
+        <!-- Part row 8 -->
+        <tr class="part-row" id="part-row-8">
+          <td class="part-data libref"></td>
+          <td class="part-data designator"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data"></td>
+          <td class="part-data">
+            <input type="checkbox" class="completion-check" onclick="checkItem(8)">
+            </td>
+        </tr>
+        <!-- Part row 9 -->
+        <tr class="part-row" id="part-row-9">
+            <td class="part-data libref"></td>
+            <td class="part-data designator"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data"></td>
+            <td class="part-data">
+                <input type="checkbox" class="completion-check" onclick="checkItem(9)">
+            </td>
+        </tr>   
+      </tbody>
+      <!-- End of main table body -->
+    </table>
+  <!-- End of rendering table -->
+  </div>
+  <!-- Section for changing pages of results -->
+  <div class="page-select">
+    <button class="page-select-button" onclick="pageChange(-1)">&laquo;</button>
+    <p id="page-select-information"></p>
+    <button class="page-select-button" onclick="pageChange(1)">&raquo;</button>
+  </div>
+  <!-- Links to script.js found in 'public' folder. This contains the functions called on certain page actions -->
+  <script src="./viewLayupScript.js"></script>
+</body>
+</html>

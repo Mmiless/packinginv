@@ -1,0 +1,15 @@
+<!-- Includes header partial to display navbar -->
+<%- include('partials/header') %>
+
+<!-- Creates HTML form -->
+<form id="add-tote-form" class="add-form">
+    <label for="tote-name">Tote/Container name: </label> <br>
+    <input type="text" id="tote-name" name="tote-name" class="add-part-form-element" required> <br>
+    <label for="tote-description">Description of Contents: </label> <br>
+    <input type="text" id="tote-description" name="tote-description" class="add-part-form-element" required> <br>
+    <input type="submit">
+</form>
+
+<script src="./addToteScript.js"></script>
+</body>
+</html>
